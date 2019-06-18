@@ -1,0 +1,230 @@
+{
+	"name": "treeview-1",
+	"displayName": "treeView-1",
+	"description": "treeView-1",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:hang-node",
+		"onView:hang-jsonOutLine",
+		"onView:hang-explorer",
+		"onView:hang-fileExplorer",
+		"onView:hang-item",
+		"onView:hang-file",
+		"onView:testView",
+		"onLanguage:json",
+		"onLanguage:jsonc"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "hang-explorer",
+					"title": "Hang-Explorer",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"hang-explorer": [
+				{
+					"id": "hang-node",
+					"name": "Hang-Node"
+				},
+				{
+					"id": "hang-jsonOutLine",
+					"name": "Hang-jsonOL",
+					"when": "jsonOutlineEnabled"
+				},
+				{
+					"id": "hang-fileExplorer",
+					"name": "Hang-fileExplorer"
+				},
+				{
+					"id": "testView",
+					"name": "Test View"
+				},
+				{
+					"id": "A_ID",
+					"name": "A_ID"
+				},
+				{
+					"id": "B_ID",
+					"name": "B_ID"
+				},
+				{
+					"id": "C_ID",
+					"name": "C_ID"
+				},
+				{
+					"id": "hang-item",
+					"name": "Hang-TreeItem"
+				},
+				{
+					"id": "hang-file",
+					"name": "Hang-TreeFile"
+				}
+			],
+			"explorer": [
+				{
+					"id": "hang-explorer",
+					"name": "Hang-View"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "hang-node.refreshEntry",
+				"title": "Refresh-node",
+				"category": "Hang",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "hang-node.addEntry",
+				"title": "Add-node",
+				"category": "Hang"
+			},
+			{
+				"command": "hang-node.editEntry",
+				"title": "Edit-node",
+				"category": "Hang",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "hang-node.deleteEntry",
+				"title": "Delete-node",
+				"category": "Hang"
+			},
+			{
+				"command": "hang-json.refresh",
+				"title": "Refresh-json",
+				"category": "Hang",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "hang-json.refreshNode",
+				"title": "RefreshNode-json",
+				"category": "Hang",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "hang-json.renameNode",
+				"title": "RenameNode-json",
+				"category": "Hang"
+			},
+			{
+				"command": "hang-file.refresh",
+				"title": "Refresh-file",
+				"category": "Hang",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "fileExplorer.openFile",
+				"title": "Open-file",
+				"category": "Hang"
+			},
+			{
+				"command": "testView.reveal",
+				"title": "Test View: Reveal"
+			},
+			{
+				"command": "hang-item.Projects",
+				"title": "Projects",
+				"category": "Hang"
+			},
+			{
+				"command": "hang-item.Settings",
+				"title": "Settings",
+				"category": "Hang"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "hang-node.refreshEntry",
+					"when": "view == hang-node",
+					"group": "navigation"
+				},
+				{
+					"command": "hang-node.addEntry",
+					"when": "view == hang-node"
+				},
+				{
+					"command": "hang-json.refresh",
+					"when": "view == hang-jsonOutLine",
+					"group": "navigation"
+				},
+				{
+					"command": "hang-file.refresh",
+					"when": "view == hang-fileExplorer"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "hang-node.editEntry",
+					"when": "view == hang-node && viewItem == dependency",
+					"group": "inline"
+				},
+				{
+					"command": "hang-node.deleteEntry",
+					"when": "view == hang-node && viewItem == dependency"
+				},
+				{
+					"command": "hang-json.refreshNode",
+					"when": "view == hang-jsonOutLine",
+					"group": "inline"
+				},
+				{
+					"command": "hang-json.renameNode",
+					"when": "view == hang-jsonOutLine",
+					"group": "inline"
+				},
+				{
+					"command": "hang-file.refresh",
+					"when": "view == hang-fileExplorer && viewItem == file",
+					"group": "inline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"jsonc-parser": "^2.1.0",
+		"opn": "^6.0.0",
+		"rimraf": "^2.6.3"
+	}
+}
