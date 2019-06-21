@@ -1,0 +1,16 @@
+{
+  "name": "newWebView",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "alita dev",
+    "build": "alita build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "alita": "*"
+  }
+}
