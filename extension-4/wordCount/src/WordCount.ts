@@ -1,7 +1,7 @@
 import { window, StatusBarItem, StatusBarAlignment, TextDocument } from 'vscode';
 
 export class WordCount {
-    private _statusBarItem: StatusBarItem;
+    private _statusBarItem!: StatusBarItem;
 
 	public updateWordCount() {
 		if(!this._statusBarItem) {
